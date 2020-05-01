@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <link href="{% static 'register/style.css'%}"  rel="stylesheet">
+</head>
+<body>
+<!-- multistep form -->
+<form method="post"id="refrm">
+    {%csrf_token%}
+     <fieldset>
+    {{form.as_p}}
+    <button type="button"  class="btn btn-success" onclick="save()">Register</button>
+    <button type="button"  class="btn btn-success" onclick="cancel()">Cancel</button>
+     </fieldset>
+</form>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+  function save(){
+  $.ajax({
+  type:"POST",
+  url:"{%url 'register'%}",
+  data:$('#refrm').serialize(),
+  success:function(data){
+  console.log(data.status)
+  if(data.status==200){
+    console.log("registered successfull");
+    swal("user successfully registered")
+    .then((value)=>{
+    window.location.href="login"
+    });
+    }
+  else
+    {
+    swal("not saved","error");
+    }
+  }
+  });
+ }
+
+   function cancel(){
+
+   }
+</script>

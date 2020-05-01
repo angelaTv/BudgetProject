@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%load static%}
+{% block body_block%}
+<h4>Budget create</h4>
+<form method="POST">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit">
+</form>
+{%endblock%}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%load static%}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+{% block body_block%}
+
+        <div class="row no-gutters bg-light position-relative">
+  <div class="col-md-6 mb-md-0 p-md-4">
+<!--    <img src="..." class="w-100" alt="...">-->
+      <a href="{%url 'createaddexpense'%}" class="stretched-link">Add Your Expenses</a>
+  </div>
+  <div class="col-md-6 position-static p-4 pl-md-0">
+    <h5 class="mt-0">Savings Check!</h5>
+    <p>Add your monthly expenses and find your daily ,weekly,monthly and yearly expenses.
+        Find out for which category you spend more</p>
+    <a href="{%url 'createaddexpense'%}" class="stretched-link">Add Your Expenses Here</a>
+  </div>
+</div>
+
+        <div class="card-deck my-5">
+
+                  <div class="card shadow" style="width: 18rem;">
+<!--                      <img src="media/money.png" class="card-img-top" alt="...">-->
+                      <div class="card-body">
+                          <h5 class="card-title">Customize Category</h5>
+                          <p class="card-text">Add yor own category to cutomize your expense list and arranging
+                              </p>
+                          <a href="{%url 'categorylist'%}"class="btn btn-primary stretched-link">Customize Category</a>
+                      </div>
+                  </div>
+
+
+                  <div class="card shadow" style="width: 18rem;">
+<!--                      <img src="media/home/finance.png" class="card-img-top" alt="...">-->
+                      <div class="card-body">
+                          <h5 class="card-title">Analyse your Expenses</h5>
+                          <p class="card-text">Add your income or a budget for a month.To find out your savings</p>
+                          <a href="{%url 'reporthome'%}"  class="btn btn-primary stretched-link">Reports</a>
+
+                      </div>
+                  </div>
+
+
+                  <div class="card shadow" style="width: 18rem;">
+<!--                      <img src="media/home/shopping.jpg" class="card-img-top" alt="...">-->
+                      <div class="card-body">
+                          <h5 class="card-title">Expenses List</h5>
+                          <p class="card-text">Update,Delete and View your all the Expenses</p>
+                          <a href="{%url 'addexpenselist'%}" class="btn btn-primary stretched-link">check my expenses</a>
+                      </div>
+                  </div>
+                </div>
+
+
+
+ {%endblock%}
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link href="{% static 'register/style.css'%}"  rel="stylesheet">
+</head>
+<body>
+
+<div class="card">
+
+  <div class="card-body">
+    <h1 class="card-title">BudgeteR</h1>
+    <h4 class="card-text">Welcome to bugeter</h4>
+      <h6 class="card-text">Manage your expenses</h6>
+  </div>
+</div>
+<br/>
+
+ <div class="card-deck my-5">
+
+                  <div class="card shadow" style="width: 18rem;">
+<!--                      <img src="media/money.png" class="card-img-top" alt="...">-->
+                      <div class="card-body">
+                          <h5 class="card-title">Login</h5>
+                          <p class="card-text">Registered user can login here</p>
+                          <a href="{%url 'login'%}"class="btn btn-primary stretched-link">login here</a>
+                      </div>
+                  </div>
+
+
+                  <div class="card shadow" style="width: 18rem;">
+<!--                      <img src="media/home/finance.png" class="card-img-top" alt="...">-->
+                      <div class="card-body">
+                          <h5 class="card-title">Register</h5>
+                          <p class="card-text">User can register here</p>
+                          <a href="{%url 'register'%}" class="btn btn-primary stretched-link">Register here</a>
+                      </div>
+                  </div>
+
+<!--guset user-->
+<!--                  <div class="card shadow" style="width: 18rem;">-->
+<!--&lt;!&ndash;                      <img src="media/home/shopping.jpg" class="card-img-top" alt="...">&ndash;&gt;-->
+<!--                      <div class="card-body">-->
+<!--                          <h5 class="card-title">Guest User</h5>-->
+<!--                          <p class="card-text">Guest User can login here</p>-->
+<!--                          <a href="#" class="btn btn-primary stretched-link">Guest user</a>-->
+<!--                      </div>-->
+<!--                  </div>-->
+                </div>
+
+

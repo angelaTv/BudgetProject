@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%load static%}
+{% block body_block%}
+<h1>The Reports</h1>
+<div class="container">
+ <div class="card-deck my-5">
+
+                  <div class="card shadow" style="width: 18rem;">
+                      <div class="card-body">
+                          <h5 class="card-title">Budget Report</h5>
+                          <p class="card-text">Analayze your balance.Add your income or a budget of a month.To
+                              find out your savings</p>
+                          <a href="{%url 'analysis'%}"class="btn btn-primary stretched-link">View</a>
+                      </div>
+                  </div>
+
+                     <div class="card shadow" style="width: 18rem;">
+                      <div class="card-body">
+                          <h5 class="card-title">Category Wise Expense</h5>
+                          <p class="card-text">select date to see in which category
+                              you spend the most</p>
+                          <a href="{%url 'reportbudget'%}"class="btn btn-primary stretched-link">View</a>
+                      </div>
+                  </div>
+
+                 <div class="card shadow" style="width: 18rem;">
+
+                      <div class="card-body">
+                          <h5 class="card-title">Date wise report On select Category</h5>
+                          <p class="card-text">select category and date for customised report
+                              </p>
+                          <a href="{%url 'review'%}"class="btn btn-primary stretched-link">View</a>
+                      </div>
+                  </div>
+
+ </div>
+<!-- second set cards-->
+
+    <div class="card-deck my-5">
+
+                  <div class="card shadow" style="width: 18rem;">
+                      <div class="card-body">
+                          <h5 class="card-title">Graph Report</h5>
+                          <p class="card-text">Analayze your balance.Add your income or a budget of a month.To
+                              find out your savings</p>
+                          <a href="{%url 'analysis'%}"class="btn btn-primary stretched-link">View</a>
+                      </div>
+                  </div>
+
+
+ </div>
+
+
+
+
+    </div>
+{%endblock%}

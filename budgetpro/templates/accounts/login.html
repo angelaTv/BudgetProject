@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <link href="{% static 'register/style.css'%}"  rel="stylesheet">
+</head>
+<body>
+<!-- multistep form -->
+<form method="post"id="msform">
+    {%csrf_token%}
+     <fieldset>
+    {{form.as_p}}
+    <button type="button" class="btn btn-primary" onclick="log()">Login</button>
+     </fieldset>
+</form>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+  function log(){
+   $.ajax({
+  type:"POST",
+  url:"{%url 'login'%}",
+  data:$('#msform').serialize(),
+  success:function(data){
+  if(data.status==200){
+    console.log("data saved");
+  swal("user successfully logged in")
+  .then((value)=>{
+  window.location.href="home"
+  });
+    }
+  else
+    {
+    swal("not saved","error");
+    }
+  }
+  });
+ }
+</script>

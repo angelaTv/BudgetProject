@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Setup</title>
+</head>
+<body>
+<h1>Budget list</h1>
+{%for bd in object_list%}
+<tr>
+    <td>{{bd.mybuget}}</td>
+    <td><a href="{%url 'updatebudget' bd.id %}">update</a></td>
+</tr>
+{%endfor%}
+</body>
+</html>
