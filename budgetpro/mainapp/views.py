@@ -4,6 +4,9 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView, T
 from .models import *
 from .forms import *
 from pylab import *
+from django.shortcuts import render
+from plotly.offline import plot
+from plotly.graph_objs import Scatter
 
 
 # ------Start view for Category ------------All done by predefined html pages all inheretied
@@ -159,6 +162,32 @@ def BudgetReport(request):
             entered_date__range=[startdate, enddate]).values('budget_category__category_name'). \
             annotate(categorysum=Sum('expense')).order_by('-categorysum')
         context['t'] = at
+        gr = AddExpense.objects.filter(user=user).filter(
+            entered_date__range=[startdate, enddate]).values('budget_category__category_name'). \
+            annotate(categorysum=Sum('expense')).order_by('-categorysum')
+        # graph plot trial
+        grlisty = []
+        grlistx=[]
+        for value in gr:
+            print(value)
+            if "categorysum" in value:
+                print("vally")
+                dat = value["categorysum"]
+                grlisty.append(dat)
+            if 'budget_category__category_name' in value:
+                print("vallx")
+                dat = value["budget_category__category_name"]
+                grlistx.append(dat)
+        print(grlisty)
+        print(grlistx)
+        x_data = grlistx
+        y_data = grlisty
+        plot_div = plot([Scatter(x=x_data, y=y_data,
+                                 mode='lines', name='test',
+                                 opacity=0.8, marker_color='green')],
+                        output_type='div', include_plotlyjs=False, show_link=False, link_text="")
+        context['plot_div']= plot_div
+
         # DateWiseReport
         data = AddExpense.objects.filter(user=user).filter(
             entered_date__range=[startdate, enddate])
@@ -167,6 +196,9 @@ def BudgetReport(request):
         qs = AddExpense.objects.filter(user=user).filter(
             entered_date__range=[startdate, enddate]).aggregate(sum=Sum('expense'))
         context['qs'] = qs
+
+
+
         return render(request, 'mainapp/budgetreport.html', context)
     return render(request, 'mainapp/enterdatereview.html')
 
@@ -182,8 +214,9 @@ def Analysis(request, *args, **kwargs):
         for value in da:
             print(value)
             print(value.expense)
-            lst = [item.expense for item in da]
-            t = sum(lst)
+        lst = [item.expense for item in da]
+        print(lst)
+        t = sum(lst)
         print(type(t))
         sumo = float(t)
         print(type(sumo))
@@ -230,3 +263,64 @@ class BudgetReview(TemplateView):
             user=request.session['username']).filter(entered_date__range=[startdate, enddate]). \
             values('budget_category__category_name').annotate(categorysum=Sum('expense')). \
             order_by('-categorysum')
+
+
+def graphty(request):
+    x_data = [0, 1, 2, 3]
+    y_data = [x ** 2 for x in x_data]
+    plot_div = plot([Scatter(x=x_data, y=y_data,
+                             mode='lines', name='test',
+                             opacity=0.8, marker_color='green')],
+                    output_type='div', include_plotlyjs=False, show_link=False, link_text="")
+    return render(request, "mainapp/graphty.html", context={'plot_div': plot_div})
+
+
+def graphReport(request):
+    if request.method == 'POST':
+        user = request.session['username']
+        context = {}
+        context['user'] = user
+        startdate = (request.POST.get("startdate"))
+        enddate = (request.POST.get("enddate"))
+        print(startdate, enddate)
+        gr = AddExpense.objects.filter(user=user).filter(
+            entered_date__range=[startdate, enddate]).values('budget_category__category_name'). \
+            annotate(categorysum=Sum('expense')).order_by('-categorysum')
+        context['t'] = gr
+        # graph plot trial
+        grlisty = []
+        grlistx = []
+        for value in gr:
+            print(value)
+            if "categorysum" in value:
+                print("vally")
+                dat = value["categorysum"]
+                grlisty.append(dat)
+            if 'budget_category__category_name' in value:
+                print("vallx")
+                dat = value["budget_category__category_name"]
+                grlistx.append(dat)
+        print(grlisty)
+        print(grlistx)
+        x_data = grlistx
+        y_data = grlisty
+        plot_div = plot([Scatter(x=x_data, y=y_data,
+                                 mode='lines', name='test',
+                                 opacity=0.8, marker_color='green')],
+                        output_type='div', include_plotlyjs=False, show_link=False, link_text="")
+        context['plot_div'] = plot_div
+
+        # Total Expense for a Date Range
+        qs = AddExpense.objects.filter(user=user).filter(
+            entered_date__range=[startdate, enddate]).aggregate(sum=Sum('expense'))
+        context['qs'] = qs
+
+        return render(request, 'mainapp/graphplot.html', context)
+    return render(request, 'mainapp/graphenterdate.html')
+
+
+
+
+
+
+

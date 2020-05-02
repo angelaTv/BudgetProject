@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <title>Budget App Report</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
 
     <body>
@@ -22,19 +23,14 @@
         <br>
         <div class="section">
             <div class="row">
-                <form class="col s12"  method='post'>
-                    {% csrf_token %}
-                    <div class="row">
                         <div class="container center">
-<!--                            <h4 class='center'>Your total budget is:-->
-<!--                                <span style="color:green;">buget object</span>Rupees</h4>-->
                             <h4 clas='center'>You've spent a total of :
                                 <span style="color:red;">{{qs.sum}}</span> Rupees</h4>
-<!--                            <h4 class='center'>Savings/Budget left:<span style="color:blue;">buget object</span>Rupees</h4>-->
+
                             <br>
 <h5 align="left"style="color:green;">In which category I spent the most?</h5>
-                            <div class="input-field col s3">
-                                <table class="striped centered responsive-table">
+                            <div  class="input-field col s3">
+                                <table  class="striped centered responsive-table">
     <thead>
         <tr>
         <th>Category</th>
@@ -53,7 +49,6 @@
     </table>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
 
@@ -86,6 +81,9 @@
                     </div>
                     <div class="col s6">
 <!--                        <img class='responsive-img' src= "{% static 'budget_app/expense.jpg' %}">-->
+                        {% autoescape off %}
+                {{ plot_div }}
+                {% endautoescape %}
                     </div>
                 </div>
         </div>

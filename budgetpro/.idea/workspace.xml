@@ -7,6 +7,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints>
+      <file url="file://$PROJECT_DIR$/mainapp/views.py" />
+    </disable_hints>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="budgetpro" />
   </component>
@@ -18,6 +23,9 @@
       </list>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/mainapp/views.py" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectId" id="1adD9q6xBmaEKGLdRsQklPBkyCX" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,7 +35,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="D:/Downloads/Django-Budget-App-master/budget_project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/mainapp" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -39,8 +47,8 @@
       <recent name="C:\Users\ANGELA\budgetpro\accounts" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ANGELA\budgetpro\templates\accounts" />
       <recent name="C:\Users\ANGELA\budgetpro\templates\mainapp" />
+      <recent name="C:\Users\ANGELA\budgetpro\templates\accounts" />
       <recent name="C:\Users\ANGELA\budgetpro\media\budget_app" />
       <recent name="C:\Users\ANGELA\budgetpro\static" />
       <recent name="C:\Users\ANGELA\budgetpro\templates\accounts\media" />

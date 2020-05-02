@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.shortcuts import render
 from django.urls import path
 from mainapp import views
-from mainapp.views import BudgetReport, Analysis, BudgetReview
+from mainapp.views import BudgetReport, Analysis, BudgetReview, graphty, graphReport
 
 #
 
@@ -24,7 +24,9 @@ urlpatterns = [
     path('reporthome/', lambda request: render(request, "mainapp/homeeports.html"), name='reporthome'),
     path('reportbud/', BudgetReport, name='reportbudget'),
     path('analysis/', Analysis, name='analysis'),
-    path('review/', views.BudgetReview.as_view(), name='review')
+    path('review/', views.BudgetReview.as_view(), name='review'),
+    path('graph/', graphty, name='graphty'),
+    path('graphrepo/', graphReport, name='graphrepo'),
 
 ]
 # path('createbudget', views.CreateBudget.as_view(), name='createbudget'),
